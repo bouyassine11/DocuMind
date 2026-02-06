@@ -54,6 +54,6 @@
 
 <div align="center">
 
-Made with ❤️ by the DocuMind Team
+Made with ❤️ by Bouyahia Yassine
 
 </div>
