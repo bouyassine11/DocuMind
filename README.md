@@ -1,272 +1,523 @@
-# DocuMind
+<div align="center">
 
-A full-stack AI-powered document chat application with React frontend, Node.js/Express backend, MongoDB database, and professional authentication system including Google OAuth. Users can upload documents (PDF/text) and have intelligent conversations with AI about their content.
+# 🧠 DocuMind
 
-## Project Structure
+### AI-Powered Document Intelligence Platform
 
+*Transform your documents into interactive conversations with advanced AI*
+
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6+-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--3.5-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [API Reference](#-api-reference)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Quick Start](#-quick-start)
+- [Configuration](#-configuration)
+- [Project Structure](#-project-structure)
+- [API Reference](#-api-reference)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+
+---
+
+## 🌟 Overview
+
+**DocuMind** is a full-stack AI-powered document intelligence platform that enables users to upload documents and engage in intelligent conversations about their content. Built with modern web technologies and powered by OpenAI's GPT models, DocuMind transforms static documents into interactive knowledge bases.
+
+### Why DocuMind?
+
+- 🤖 **AI-Powered Analysis** - Leverage GPT-3.5-turbo for intelligent document understanding
+- 📄 **Multi-Format Support** - Upload PDF and text documents seamlessly
+- 💬 **Interactive Chat** - Ask questions, get summaries, and extract insights
+- 🔐 **Secure Authentication** - JWT-based auth with Google OAuth integration
+- 📱 **Responsive Design** - Beautiful UI that works on all devices
+- 💾 **Persistent History** - Never lose your conversation context
+
+---
+
+## ✨ Features
+
+### 🎯 Core Capabilities
+
+| Feature | Description |
+|---------|-------------|
+| **Document Upload** | Support for PDF and text file formats with automatic text extraction |
+| **AI Conversations** | Natural language interactions powered by OpenAI GPT-3.5-turbo |
+| **Smart Analysis** | Ask questions, generate summaries, and extract key insights |
+| **Chat History** | Persistent conversation storage for each document |
+| **Document Management** | Organize, view, and delete your uploaded documents |
+
+### 🔒 Authentication & Security
+
+- **Local Authentication** - Secure email/password registration with bcrypt hashing
+- **Google OAuth 2.0** - One-click sign-in with Google accounts
+- **JWT Tokens** - Stateless authentication with secure token management
+- **Protected Routes** - Role-based access control for sensitive endpoints
+- **Session Management** - Proper login/logout flow with token refresh
+
+### 🎨 User Experience
+
+- **Modern Landing Page** - Professional marketing page for new visitors
+- **Intuitive Dashboard** - Clean interface for document management
+- **Real-time Chat UI** - Responsive chat interface with typing indicators
+- **Mobile Responsive** - Optimized for desktop, tablet, and mobile devices
+- **Dark Mode Ready** - Tailwind CSS with customizable themes
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 ```
-documind/
-├── client/          # React frontend (Vite)
-├── server/          # Node.js/Express backend
-└── README.md
+React 18          - UI library
+Vite              - Build tool & dev server
+Tailwind CSS      - Utility-first CSS framework
+React Router      - Client-side routing
+Axios             - HTTP client
 ```
 
-## Prerequisites
+### Backend
+```
+Node.js           - Runtime environment
+Express           - Web application framework
+MongoDB           - NoSQL database
+Mongoose          - MongoDB ODM
+Passport.js       - Authentication middleware
+JWT               - Token-based authentication
+OpenAI API        - AI/ML capabilities
+```
 
-- Node.js 18+
-- MongoDB (local installation or cloud instance)
-- npm or yarn
+### DevOps & Tools
+```
+Nodemon           - Development auto-reload
+ESLint            - Code linting
+PDF-Parse         - PDF text extraction
+Bcrypt            - Password hashing
+CORS              - Cross-origin resource sharing
+```
 
-## Quick Start
+---
 
-1. **Install MongoDB locally** (if not already installed):
-   - Download from https://www.mongodb.com/try/download/community
-   - Or use MongoDB Atlas (cloud)
+## 📦 Prerequisites
 
-2. **Start MongoDB service:**
-   ```bash
-   # On Linux/Mac
-   sudo systemctl start mongod
-   # Or brew services start mongodb-community (Mac with Homebrew)
-   ```
+Before you begin, ensure you have the following installed:
 
-3. **Install server dependencies and start:**
-   ```bash
-   cd server
-   npm install
-   npm run start
-   ```
+- **Node.js** `18.x` or higher ([Download](https://nodejs.org/))
+- **MongoDB** `6.x` or higher ([Download](https://www.mongodb.com/try/download/community))
+- **npm** or **yarn** package manager
+- **OpenAI API Key** ([Get one here](https://platform.openai.com/api-keys))
+- **Google OAuth Credentials** (optional, for Google sign-in)
 
-4. **Install client dependencies and start (in a new terminal):**
-   ```bash
-   cd client
-   npm install
-   npm run dev
-   ```
+---
 
-5. **Access the application:**
-   - **Landing Page:** http://localhost:5173 (for new visitors)
-   - **Login:** http://localhost:5173/login
-   - **Register:** http://localhost:5173/register
-   - **Backend API:** http://localhost:5000
+## 🚀 Quick Start
 
-## Features
+### 1️⃣ Clone the Repository
 
-### AI Document Chat
-- **Document Upload:** Support for PDF and text file uploads
-- **AI Conversations:** Chat with AI about your document content using OpenAI GPT
-- **Intelligent Analysis:** Ask questions, get summaries, extract insights from documents
-- **Chat History:** Persistent conversation history for each document
-- **Document Management:** Organize and manage your uploaded documents
+```bash
+git clone https://github.com/yourusername/documind.git
+cd documind
+```
 
-### Authentication System
-- **Local Authentication:** Email/password registration and login
-- **Google OAuth:** One-click sign-in with Google accounts
-- **JWT Tokens:** Secure token-based authentication
-- **Password Security:** Bcrypt hashing with salt rounds
-- **Session Management:** Proper login/logout handling
+### 2️⃣ Set Up MongoDB
 
-### Server (Backend)
-- **Technology:** Node.js + Express
-- **Port:** 5000
-- **Features:**
-  - REST API with authentication middleware
-  - JWT Authentication with Passport.js
-  - MongoDB integration with Mongoose
-  - Google OAuth 2.0 integration
-  - Document upload and processing (PDF/text)
-  - OpenAI integration for AI chat
-  - File storage and text extraction
-  - Chat history management
-  - CORS enabled
-  - Session management
+**Option A: Local Installation**
+```bash
+# Linux/Ubuntu
+sudo systemctl start mongod
 
-### Client (Frontend)
-- **Technology:** React + Vite + Tailwind CSS
-- **Port:** 5173
-- **Features:**
-  - Modern React with hooks
-  - React Router for navigation
-  - Tailwind CSS for styling
-  - Beautiful landing page for new users
-  - Professional authentication UI
-  - Document upload interface
-  - Real-time chat interface with AI
-  - Document management dashboard
-  - Protected routes with authentication checks
-  - API proxy to backend
-  - Responsive design
+# macOS (with Homebrew)
+brew services start mongodb-community
 
-## Environment Variables
+# Windows
+net start MongoDB
+```
 
-The server uses the following environment variables (configured in `server/.env`):
+**Option B: MongoDB Atlas (Cloud)**
+- Sign up at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- Create a cluster and get your connection string
+
+### 3️⃣ Configure Environment Variables
+
+Create a `.env` file in the `server` directory:
+
+```bash
+cd server
+cp .env.example .env  # If example exists, otherwise create new file
+```
+
+Edit `server/.env` with your credentials:
 
 ```env
+# Server Configuration
 NODE_ENV=development
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/documind
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
 CORS_ORIGIN=http://localhost:5173
 
-# Google OAuth (Required for Google sign-in)
+# Database
+MONGODB_URI=mongodb://localhost:27017/documind
+
+# Authentication
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+
+# Google OAuth (Optional)
 GOOGLE_CLIENT_ID=your_google_client_id_here
 GOOGLE_CLIENT_SECRET=your_google_client_secret_here
 BASE_URL=http://localhost:5000
 
-# OpenAI Configuration (Required for AI chat)
+# OpenAI
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### Google OAuth Setup
+### 4️⃣ Install Dependencies & Start
 
-To enable Google sign-in, follow these steps:
+**Terminal 1 - Backend:**
+```bash
+cd server
+npm install
+npm run start
+```
 
-1. **Go to Google Cloud Console:** https://console.cloud.google.com/
-2. **Create a new project** or select an existing one
-3. **Enable Google+ API:** Go to "APIs & Services" > "Library" > Search for "Google+ API" > Enable
-4. **Create OAuth 2.0 credentials:**
-   - Go to "APIs & Services" > "Credentials"
-   - Click "Create Credentials" > "OAuth 2.0 Client IDs"
-   - Choose "Web application"
-   - Add authorized redirect URIs:
-     - `http://localhost:5000/api/auth/google/callback` (development)
-     - Your production URL + `/api/auth/google/callback`
-   - Add authorized JavaScript origins:
-     - `http://localhost:5173` (development)
-     - Your production frontend URL
-5. **Copy credentials** to your `.env` file:
-   - Client ID → `GOOGLE_CLIENT_ID`
-   - Client Secret → `GOOGLE_CLIENT_SECRET`
+**Terminal 2 - Frontend:**
+```bash
+cd client
+npm install
+npm run dev
+```
 
-### OpenAI API Setup
+### 5️⃣ Access the Application
 
-To enable AI chat functionality:
+- **Frontend:** [http://localhost:5173](http://localhost:5173)
+- **Backend API:** [http://localhost:5000](http://localhost:5000)
+- **API Health Check:** [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
-1. **Get OpenAI API Key:** https://platform.openai.com/api-keys
-2. **Create an account** and add billing information
-3. **Generate an API key** and copy it to your `.env` file as `OPENAI_API_KEY`
-4. **Note:** The application uses GPT-3.5-turbo model for cost efficiency
+---
 
-## Application Routes
+## ⚙️ Configuration
 
-### Public Routes (No Authentication Required)
-- `/` - Landing page (beautiful marketing page for new visitors)
+### 🔑 Google OAuth Setup
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing
+3. Enable **Google+ API**:
+   - Navigate to "APIs & Services" → "Library"
+   - Search for "Google+ API" → Enable
+4. Create OAuth 2.0 credentials:
+   - Go to "APIs & Services" → "Credentials"
+   - Click "Create Credentials" → "OAuth 2.0 Client IDs"
+   - Application type: "Web application"
+   - **Authorized redirect URIs:**
+     - `http://localhost:5000/api/auth/google/callback`
+   - **Authorized JavaScript origins:**
+     - `http://localhost:5173`
+5. Copy Client ID and Client Secret to your `.env` file
+
+### 🤖 OpenAI API Setup
+
+1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Create an account and add billing information
+3. Generate a new API key
+4. Add the key to your `.env` file as `OPENAI_API_KEY`
+
+> **Note:** DocuMind uses GPT-3.5-turbo for cost efficiency. You can modify the model in the chat service.
+
+---
+
+## 📁 Project Structure
+
+```
+documind/
+├── client/                      # React Frontend
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── pages/              # Page components
+│   │   ├── services/           # API service layer
+│   │   ├── context/            # React context providers
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── utils/              # Utility functions
+│   │   ├── App.jsx             # Main app component
+│   │   └── main.jsx            # Entry point
+│   ├── public/                 # Static assets
+│   ├── package.json
+│   └── vite.config.js          # Vite configuration
+│
+├── server/                      # Node.js Backend
+│   ├── src/
+│   │   ├── config/             # Configuration files
+│   │   ├── controllers/        # Route controllers
+│   │   ├── middleware/         # Express middleware
+│   │   ├── models/             # Mongoose models
+│   │   ├── routes/             # API routes
+│   │   ├── services/           # Business logic
+│   │   ├── utils/              # Utility functions
+│   │   └── server.js           # Entry point
+│   ├── uploads/                # Document storage
+│   ├── package.json
+│   └── .env                    # Environment variables
+│
+└── README.md                    # This file
+```
+
+---
+
+## 🌐 API Reference
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/api/auth/register` | Register new user | ❌ |
+| `POST` | `/api/auth/login` | Login user | ❌ |
+| `POST` | `/api/auth/logout` | Logout user | ✅ |
+| `GET` | `/api/auth/me` | Get current user | ✅ |
+| `PUT` | `/api/auth/profile` | Update profile | ✅ |
+| `GET` | `/api/auth/google` | Initiate Google OAuth | ❌ |
+| `GET` | `/api/auth/google/callback` | Google OAuth callback | ❌ |
+
+### Document Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/api/documents/upload` | Upload document | ✅ |
+| `GET` | `/api/documents` | Get all user documents | ✅ |
+| `GET` | `/api/documents/:id` | Get specific document | ✅ |
+| `DELETE` | `/api/documents/:id` | Delete document | ✅ |
+
+### Chat Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/api/chat/:documentId/message` | Send message to AI | ✅ |
+| `GET` | `/api/chat/:documentId/history` | Get chat history | ✅ |
+| `DELETE` | `/api/chat/:documentId/history` | Clear chat history | ✅ |
+
+### General Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/` | Welcome message | ❌ |
+| `GET` | `/api/health` | Health check | ❌ |
+
+---
+
+## 🔄 Application Routes
+
+### Public Routes (No Authentication)
+
+- `/` - Landing page with marketing content
 - `/login` - User login page
 - `/register` - User registration page
-- `/auth/callback` - Google OAuth callback
+- `/auth/callback` - OAuth callback handler
 
 ### Protected Routes (Authentication Required)
-- `/profile` - User profile page (main landing page for logged-in users)
-- `/dashboard` - User dashboard
-- `/documents` - Document management page
+
+- `/profile` - User profile and settings
+- `/dashboard` - Main user dashboard
+- `/documents` - Document management interface
 - `/chat/:documentId` - AI chat interface for specific document
 
 ### Routing Logic
-- **Unauthenticated users** visiting `/` see the landing page
-- **Authenticated users** visiting `/` are redirected to `/profile`
-- **Accessing protected routes** without authentication redirects to `/login`
-- **Authenticated users** cannot access `/login` or `/register` (redirected to `/profile`)
-- **All authentication** redirects users to `/profile` after success
 
-## API Endpoints
-
-### Authentication Endpoints
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `PUT /api/auth/profile` - Update user profile
-- `GET /api/auth/google` - Initiate Google OAuth
-- `GET /api/auth/google/callback` - Google OAuth callback
-- `GET /api/auth/me` - Get current user info (requires auth)
-
-### Document Endpoints
-- `POST /api/documents/upload` - Upload document (PDF/text)
-- `GET /api/documents` - Get user's documents
-- `GET /api/documents/:id` - Get specific document
-- `DELETE /api/documents/:id` - Delete document
-
-### Chat Endpoints
-- `POST /api/chat/:documentId/message` - Send message to AI about document
-- `GET /api/chat/:documentId/history` - Get chat history for document
-- `DELETE /api/chat/:documentId/history` - Clear chat history
-
-### General Endpoints
-- `GET /` - Welcome message
-- `GET /api/health` - Health check
-
-## Development Commands
-
-### Server
-```bash
-cd server
-npm install          # Install dependencies
-npm run start        # Start development server with nodemon
+```
+Unauthenticated User → / → Landing Page
+Authenticated User → / → Redirect to /profile
+Protected Route Access → Redirect to /login
+Login/Register (Authenticated) → Redirect to /profile
 ```
 
-### Client
+---
+
+## 💻 Development
+
+### Available Scripts
+
+#### Server Commands
+
 ```bash
-cd client
-npm install          # Install dependencies
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
+npm run start          # Start with nodemon (auto-reload)
+npm run dev            # Development mode
+npm run prod           # Production mode
 ```
 
-### MongoDB
+#### Client Commands
+
 ```bash
-# Check MongoDB status
+npm run dev            # Start development server
+npm run build          # Build for production
+npm run preview        # Preview production build
+npm run lint           # Run ESLint
+```
+
+#### MongoDB Commands
+
+```bash
+# Check status
 sudo systemctl status mongod
 
-# Start MongoDB
+# Start service
 sudo systemctl start mongod
 
-# Stop MongoDB
+# Stop service
 sudo systemctl stop mongod
 
-# Connect to MongoDB shell
+# Restart service
+sudo systemctl restart mongod
+
+# Connect to shell
 mongosh
 ```
 
-## Troubleshooting
+### Development Workflow
 
-1. **MongoDB connection issues:**
-   - Ensure MongoDB is running: `sudo systemctl status mongod`
-   - Check if MongoDB is listening on port 27017
-   - Verify `MONGODB_URI` in `server/.env`
+1. **Start MongoDB** service
+2. **Run backend** in one terminal: `cd server && npm run start`
+3. **Run frontend** in another terminal: `cd client && npm run dev`
+4. **Access application** at `http://localhost:5173`
+5. **Make changes** - both servers auto-reload on file changes
 
-2. **Port conflicts:**
-   - Ensure ports 5000 and 5173 are available
-   - Change ports in `.env` or `vite.config.js` if needed
+---
 
-3. **CORS issues:**
-   - Check `CORS_ORIGIN` in `server/.env` matches your frontend URL
+## 🚢 Deployment
 
-4. **Dependencies issues:**
-   - Delete `node_modules` and run `npm install` again
-   - Clear npm cache: `npm cache clean --force`
+### Production Checklist
 
-## Production Deployment
+- [ ] Update `JWT_SECRET` to a strong random string
+- [ ] Configure production `MONGODB_URI` with authentication
+- [ ] Set `NODE_ENV=production`
+- [ ] Update `CORS_ORIGIN` to production frontend URL
+- [ ] Configure Google OAuth with production callback URLs
+- [ ] Set up SSL/TLS certificates
+- [ ] Configure reverse proxy (nginx/Apache)
+- [ ] Set up process manager (PM2)
+- [ ] Enable MongoDB authentication
+- [ ] Set up monitoring and logging
+- [ ] Configure backup strategy
 
-For production deployment:
+### Deployment Example (PM2)
 
-1. Update environment variables in `server/.env`
-2. Change JWT secret to a secure random string
-3. Configure proper CORS origins
-4. Set up MongoDB authentication
-5. Use a process manager like PM2 for the Node.js server
-6. Configure reverse proxy (nginx) for production
+```bash
+# Install PM2 globally
+npm install -g pm2
 
-## Scripts
+# Start backend
+cd server
+pm2 start src/server.js --name documind-api
 
-### Server Scripts
-- `npm run start` - Start server with nodemon (development)
+# Build frontend
+cd ../client
+npm run build
 
-### Client Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
+# Serve with nginx or PM2
+pm2 serve dist 5173 --name documind-frontend
 
-## License
+# Save PM2 configuration
+pm2 save
+pm2 startup
+```
 
-ISC
+### Environment Variables (Production)
+
+```env
+NODE_ENV=production
+PORT=5000
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/documind
+JWT_SECRET=<generate-strong-secret>
+CORS_ORIGIN=https://yourdomain.com
+GOOGLE_CLIENT_ID=<production-client-id>
+GOOGLE_CLIENT_SECRET=<production-client-secret>
+BASE_URL=https://api.yourdomain.com
+OPENAI_API_KEY=<your-api-key>
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### MongoDB Connection Failed
+
+```bash
+# Check if MongoDB is running
+sudo systemctl status mongod
+
+# Check MongoDB logs
+sudo tail -f /var/log/mongodb/mongod.log
+
+# Verify connection string in .env
+MONGODB_URI=mongodb://localhost:27017/documind
+```
+
+#### Port Already in Use
+
+```bash
+# Find process using port 5000
+lsof -i :5000
+
+# Kill the process
+kill -9 <PID>
+
+# Or change port in .env
+PORT=5001
+```
+
+#### CORS Errors
+
+- Ensure `CORS_ORIGIN` in `server/.env` matches your frontend URL
+- Check that both servers are running
+- Clear browser cache and cookies
+
+#### Google OAuth Not Working
+
+- Verify redirect URIs in Google Cloud Console
+- Check `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in `.env`
+- Ensure `BASE_URL` is correct
+
+#### OpenAI API Errors
+
+- Verify API key is valid and has credits
+- Check API rate limits
+- Ensure billing is set up on OpenAI account
+
+#### Dependencies Issues
+
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the **ISC License**.
+
+---
+
+<div align="center">
+
+### 🌟 Star this repo if you find it helpful!
+
+Made with ❤️ by the DocuMind Team
+
+[Report Bug](https://github.com/yourusername/documind/issues) • [Request Feature](https://github.com/yourusername/documind/issues)
+
+</div>
