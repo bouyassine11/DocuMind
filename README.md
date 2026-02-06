@@ -12,11 +12,11 @@
 
 ## 📖 Description
 
-**DocuMind** is a full-stack AI-powered document intelligence platform that enables users to upload documents (PDF and text files) and engage in intelligent conversations about their content. Built with modern web technologies and powered by OpenAI's GPT-3.5-turbo, DocuMind transforms static documents into interactive knowledge bases.
+**DocuMind** is a full-stack AI-powered document intelligence platform that enables users to upload documents (PDF and text files) and engage in intelligent conversations about their content. Built with modern web technologies and powered by Qwen AI model via Hugging Face, DocuMind transforms static documents into interactive knowledge bases.
 
 ### Key Features
 
-- 🤖 **AI-Powered Conversations** - Chat with your documents using OpenAI GPT-3.5-turbo
+- 🤖 **AI-Powered Conversations** - Chat with your documents using Qwen3-Coder-Next model
 - 📄 **Multi-Format Support** - Upload and process PDF and text documents
 - 🔐 **Secure Authentication** - JWT-based authentication with Google OAuth integration
 - 💬 **Chat History** - Persistent conversation storage for each document
@@ -41,7 +41,7 @@
 - **Mongoose** - MongoDB object modeling
 - **Passport.js** - Authentication middleware
 - **JWT** - JSON Web Tokens for secure authentication
-- **OpenAI API** - AI/ML capabilities (GPT-3.5-turbo)
+- **Hugging Face API** - AI/ML capabilities (Qwen3-Coder-Next model)
 - **PDF-Parse** - PDF text extraction
 - **Bcrypt** - Password hashing
 
