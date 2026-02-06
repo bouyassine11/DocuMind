@@ -1,6 +1,6 @@
 # DocuMind
 
-A full-stack web application with React frontend, Node.js/Express backend, MongoDB database, and professional authentication system including Google OAuth.
+A full-stack AI-powered document chat application with React frontend, Node.js/Express backend, MongoDB database, and professional authentication system including Google OAuth. Users can upload documents (PDF/text) and have intelligent conversations with AI about their content.
 
 ## Project Structure
 
@@ -52,6 +52,13 @@ documind/
 
 ## Features
 
+### AI Document Chat
+- **Document Upload:** Support for PDF and text file uploads
+- **AI Conversations:** Chat with AI about your document content using OpenAI GPT
+- **Intelligent Analysis:** Ask questions, get summaries, extract insights from documents
+- **Chat History:** Persistent conversation history for each document
+- **Document Management:** Organize and manage your uploaded documents
+
 ### Authentication System
 - **Local Authentication:** Email/password registration and login
 - **Google OAuth:** One-click sign-in with Google accounts
@@ -67,6 +74,10 @@ documind/
   - JWT Authentication with Passport.js
   - MongoDB integration with Mongoose
   - Google OAuth 2.0 integration
+  - Document upload and processing (PDF/text)
+  - OpenAI integration for AI chat
+  - File storage and text extraction
+  - Chat history management
   - CORS enabled
   - Session management
 
@@ -79,6 +90,9 @@ documind/
   - Tailwind CSS for styling
   - Beautiful landing page for new users
   - Professional authentication UI
+  - Document upload interface
+  - Real-time chat interface with AI
+  - Document management dashboard
   - Protected routes with authentication checks
   - API proxy to backend
   - Responsive design
@@ -98,6 +112,9 @@ CORS_ORIGIN=http://localhost:5173
 GOOGLE_CLIENT_ID=your_google_client_id_here
 GOOGLE_CLIENT_SECRET=your_google_client_secret_here
 BASE_URL=http://localhost:5000
+
+# OpenAI Configuration (Required for AI chat)
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ### Google OAuth Setup
@@ -121,6 +138,15 @@ To enable Google sign-in, follow these steps:
    - Client ID → `GOOGLE_CLIENT_ID`
    - Client Secret → `GOOGLE_CLIENT_SECRET`
 
+### OpenAI API Setup
+
+To enable AI chat functionality:
+
+1. **Get OpenAI API Key:** https://platform.openai.com/api-keys
+2. **Create an account** and add billing information
+3. **Generate an API key** and copy it to your `.env` file as `OPENAI_API_KEY`
+4. **Note:** The application uses GPT-3.5-turbo model for cost efficiency
+
 ## Application Routes
 
 ### Public Routes (No Authentication Required)
@@ -132,6 +158,8 @@ To enable Google sign-in, follow these steps:
 ### Protected Routes (Authentication Required)
 - `/profile` - User profile page (main landing page for logged-in users)
 - `/dashboard` - User dashboard
+- `/documents` - Document management page
+- `/chat/:documentId` - AI chat interface for specific document
 
 ### Routing Logic
 - **Unauthenticated users** visiting `/` see the landing page
@@ -150,6 +178,17 @@ To enable Google sign-in, follow these steps:
 - `GET /api/auth/google` - Initiate Google OAuth
 - `GET /api/auth/google/callback` - Google OAuth callback
 - `GET /api/auth/me` - Get current user info (requires auth)
+
+### Document Endpoints
+- `POST /api/documents/upload` - Upload document (PDF/text)
+- `GET /api/documents` - Get user's documents
+- `GET /api/documents/:id` - Get specific document
+- `DELETE /api/documents/:id` - Delete document
+
+### Chat Endpoints
+- `POST /api/chat/:documentId/message` - Send message to AI about document
+- `GET /api/chat/:documentId/history` - Get chat history for document
+- `DELETE /api/chat/:documentId/history` - Clear chat history
 
 ### General Endpoints
 - `GET /` - Welcome message

@@ -6,6 +6,8 @@ import AuthCallback from './components/auth/AuthCallback';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Landing from './components/Landing';
+import Documents from './components/Documents';
+import Chat from './components/Chat';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -89,6 +91,14 @@ function App() {
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/documents"
+          element={isAuthenticated ? <Documents /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/chat/:documentId"
+          element={isAuthenticated ? <Chat /> : <Navigate to="/login" replace />}
         />
 
         {/* Catch all route */}

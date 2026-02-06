@@ -15,6 +15,15 @@ export const authenticateToken = async (req, res, next) => {
       });
     }
 
+    // Check if JWT secret is configured
+    if (!config.jwt.secret || config.jwt.secret === 'default_jwt_secret_change_in_production') {
+      console.error('❌ JWT_SECRET not properly configured');
+      return res.status(500).json({
+        success: false,
+        message: 'Server configuration error'
+      });
+    }
+
     // Verify token
     const decoded = jwt.verify(token, config.jwt.secret);
 

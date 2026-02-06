@@ -1,13 +1,14 @@
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from '../models/User.js';
+import config from './config.js';
 
 // Only initialize Google strategy if credentials are available
-if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
+if (config.google.clientId && config.google.clientSecret) {
   passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:5000'}/api/auth/google/callback`
+    clientID: config.google.clientId,
+    clientSecret: config.google.clientSecret,
+    callbackURL: `${config.google.baseUrl}/api/auth/google/callback`
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
